@@ -1,0 +1,79 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+{% include 'example_info.html' %}
+
+{%  set bulk_copy1_form_index = 0 %}
+{%  set bulk_copy2_form_index = 1 %}
+{%  set signer_email_index = 0 %}
+{%  set signer_name_index = 1 %}
+{%  set cc_email_index = 2 %}
+{%  set cc_name_index = 3 %}
+
+    <form class="eg" action="" method="post" data-busy="form">
+        <div class="row">
+            <div class="col-md-6">
+                {% if 'FormName' in example['Forms'][bulk_copy1_form_index] %}
+                    <h5>{{ example['Forms'][bulk_copy1_form_index]['FormName'] | safe }}</h5>
+                {% endif %}
+                <div class="form-group">
+                    <label for="signer_email_1">{{ example['Forms'][bulk_copy1_form_index]['Inputs'][signer_email_index]['InputName'] }}</label>
+                    <input type="email" class="form-control" id="signer_email_1" name="signer_email_1"
+                           aria-describedby="emailHelp" placeholder="{{ example['Forms'][bulk_copy1_form_index]['Inputs'][signer_email_index]['InputPlaceholder'] }}" required
+                           value="{{ signer_email }}">
+                </div>
+    
+                <div class="form-group">
+                    <label for="signer_name_1">{{ example['Forms'][bulk_copy1_form_index]['Inputs'][signer_name_index]['InputName'] }}</label>
+                    <input type="text" class="form-control" id="signer_name_1" placeholder="{{ example['Forms'][bulk_copy1_form_index]['Inputs'][signer_name_index]['InputPlaceholder'] }}" name="signer_name_1"
+                           value="{{ signer_name }}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="cc_email_1">{{ example['Forms'][bulk_copy1_form_index]['Inputs'][cc_email_index]['InputName'] }}</label>
+                    <input type="email" class="form-control" id="cc_email_1" name="cc_email_1"
+                           aria-describedby="emailHelp" placeholder="{{ example['Forms'][bulk_copy1_form_index]['Inputs'][cc_email_index]['InputPlaceholder'] }}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="cc_name_1">{{ example['Forms'][bulk_copy1_form_index]['Inputs'][cc_name_index]['InputName'] }}</label>
+                    <input type="text" class="form-control" id="cc_name_1" placeholder="{{ example['Forms'][bulk_copy1_form_index]['Inputs'][cc_name_index]['InputPlaceholder'] }}" name="cc_name_1"
+                    required>
+                </div>
+            </div>
+    
+            <div class="col-md-6">
+                {% if 'FormName' in example['Forms'][bulk_copy2_form_index] %}
+                    <h5>{{ example['Forms'][bulk_copy2_form_index]['FormName'] | safe }}</h5>
+                {% endif %}
+                <div class="form-group">
+                    <label for="signer_email_2">{{ example['Forms'][bulk_copy2_form_index]['Inputs'][signer_email_index]['InputName'] }}</label>
+                    <input type="email" class="form-control" id="signer_email_2" name="signer_email_2"
+                           aria-describedby="emailHelp" placeholder="{{ example['Forms'][bulk_copy2_form_index]['Inputs'][signer_email_index]['InputPlaceholder'] }}" required
+                           value="{{ signer_email }}">
+                </div>
+    
+                <div class="form-group">
+                    <label for="signer_name_2">{{ example['Forms'][bulk_copy2_form_index]['Inputs'][signer_name_index]['InputName'] }}</label>
+                    <input type="text" class="form-control" id="signer_name_2" placeholder="{{ example['Forms'][bulk_copy2_form_index]['Inputs'][signer_name_index]['InputPlaceholder'] }}" name="signer_name_2"
+                           value="{{ signer_name }}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="cc_email_2">{{ example['Forms'][bulk_copy2_form_index]['Inputs'][cc_email_index]['InputName'] }}</label>
+                    <input type="email" class="form-control" id="cc_email_2" name="cc_email_2"
+                           aria-describedby="emailHelp" placeholder="{{ example['Forms'][bulk_copy2_form_index]['Inputs'][cc_email_index]['InputPlaceholder'] }}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="cc_name_2">{{ example['Forms'][bulk_copy2_form_index]['Inputs'][cc_name_index]['InputName'] }}</label>
+                    <input type="text" class="form-control" id="cc_name_2" placeholder="{{ example['Forms'][bulk_copy2_form_index]['Inputs'][cc_name_index]['InputPlaceholder'] }}" name="cc_name_2"
+                    required>
+                </div>
+            </div>
+            </div>
+        <div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            {% include 'submit_button.html' %}
+        </div>
+    </form>
+{% endblock %}

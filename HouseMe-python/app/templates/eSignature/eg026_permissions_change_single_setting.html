@@ -1,0 +1,29 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+{% include 'example_info.html' %}
+
+{%  set permission_profile_form_index = 0 %}
+{%  set permission_profile_index = 0 %}
+
+    <form class="eg" action="" method="post" data-busy="form">
+        {% if 'FormName' in example['Forms'][permission_profile_form_index] %}
+            <p>{{ example['Forms'][permission_profile_form_index]['FormName'] | safe }}</p>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="permission_profile">{{ example['Forms'][permission_profile_form_index]['Inputs'][permission_profile_index]['InputName'] }}</label>
+            <br>
+            <select id="permission_profile" name="permission_profile" class="form-control">
+                {% for profile in permission_profiles %}
+                    <option value="{{ profile.permission_profile_id }}">{{ profile.permission_profile_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            {% include 'submit_button.html' %}
+        </div>
+    </form>
+
+{% endblock %}

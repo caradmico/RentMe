@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Property Portfolio</h1>
+    <button onclick="location.href='{% url 'add_property' %}'">Add Property</button>
+    {% if properties %}
+        <ul>
+            {% for property in properties %}
+                <li>
+                    {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                    - {{ property.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No properties found.</p>
+    {% endif %}
+{% endblock %}

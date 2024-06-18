@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: houseme_db
+      POSTGRES_USER: new_admin
+      POSTGRES_PASSWORD: databaseadmin2024!
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "houseme_project.wsgi:application"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SECRET_KEY=default_secret_key
+      - DB_NAME=houseme_db
+      - DB_USER=new_admin
+      - DB_PASSWORD=databaseadmin2024!
+      - DB_HOST=db
+      - DB_PORT=5432
+
+volumes:
+  postgres_data:

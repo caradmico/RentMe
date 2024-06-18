@@ -1,0 +1,33 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+<div class="container">
+
+{% include 'example_info.html' %}
+
+{%  set form_index = 0 %}
+{%  set start_index = 0 %}
+{%  set end_index = 1 %}
+{%  set redirect_to1_index = 0 %}
+
+<form class="eg" action="" method="post" data-busy="form">
+    {% if rooms %}
+        {% if 'FormName' in example['Forms'][form_index] %}
+            <p>{{ example['Forms'][form_index]['FormName'] | safe }}</p>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="start_date">{{ example['Forms'][form_index]['Inputs'][start_index]['InputName'] }}</label>
+            <input type="date" class="form-control" id="start_date" name="start_date" value="{{ start }}" required>
+        </div>
+        <div class="form-group">
+            <label for="end_date">{{ example['Forms'][form_index]['Inputs'][end_index]['InputName'] }}</label>
+            <input type="date" class="form-control" id="end_date" name="end_date" value="{{ end }}" required>
+        </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% include 'submit_button.html' %}
+    {% else %}
+        {{ example['RedirectsToOtherCodeExamples'][redirect_to1_index]['RedirectText'].format('href="eg001"') | safe }}
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "docker-run: debug",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": [
+                "up",
+                "--build",
+                "--abort-on-container-exit"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Generated task to build and run a Docker container in debug mode."
+        }
+    ]
+}

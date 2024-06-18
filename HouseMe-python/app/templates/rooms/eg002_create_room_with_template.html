@@ -1,0 +1,41 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+<div class="container">
+
+{% include 'example_info.html' %}
+
+{%  set form_index = 0 %}
+{%  set room_name_index = 0 %}
+{%  set template_index = 1 %}
+
+<form class="eg" action="" method="post" data-busy="form">
+    {% if templates %}
+        {% if 'FormName' in example['Forms'][form_index] %}
+            <p>{{ example['Forms'][form_index]['FormName'] | safe }}</p>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="room_name">{{ example['Forms'][form_index]['Inputs'][room_name_index]['InputName'] }}</label>
+          <input type="text" class="form-control" id="room_name" name="room_name" required>
+        </div>
+        <div class="form-group">
+            <label for="template_id">{{ example['Forms'][form_index]['Inputs'][template_index]['InputName'] }}</label>
+                <select class="form-control" id="template_id" name="template_id">
+                    {% for template in templates %}
+                        <option value="{{ template.room_template_id }}">{{ template.name }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% include 'submit_button.html' %}
+    {% else %}
+        <p>Problem: please first
+            <a href="https://developers.docusign.com/rooms-api/guides/templates" target="_blank">create a template.</a>
+            <br/>Thank you.</p>
+    {% endif %}
+  </form>
+
+</div>
+  
+{% endblock %}
+

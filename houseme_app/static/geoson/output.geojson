@@ -1,0 +1,2005 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      },
+      "properties": {
+        "address": "123 Elm Street",
+        "price": "$2,362.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2712,
+          37.8044
+        ]
+      },
+      "properties": {
+        "address": "456 Oak Avenue",
+        "price": "$2,467.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.273,
+          37.8715
+        ]
+      },
+      "properties": {
+        "address": "789 Maple Drive",
+        "price": "$2,450.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8863,
+          37.3382
+        ]
+      },
+      "properties": {
+        "address": "101 Pine Lane",
+        "price": "$2,499.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.143,
+          37.4419
+        ]
+      },
+      "properties": {
+        "address": "202 Cedar Road",
+        "price": "$3,799.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4702,
+          37.6879
+        ]
+      },
+      "properties": {
+        "address": "303 Birch Boulevard",
+        "price": "$2,728.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0839,
+          37.3861
+        ]
+      },
+      "properties": {
+        "address": "404 Spruce Street",
+        "price": "$2,210.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0363,
+          37.3688
+        ]
+      },
+      "properties": {
+        "address": "505 Willow Way",
+        "price": "$2,995.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9552,
+          37.3541
+        ]
+      },
+      "properties": {
+        "address": "606 Ash Court",
+        "price": "$2,070.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9886,
+          37.5483
+        ]
+      },
+      "properties": {
+        "address": "707 Redwood Road",
+        "price": "$2,775.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0814,
+          37.6688
+        ]
+      },
+      "properties": {
+        "address": "808 Cypress Street",
+        "price": "$3,300.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2416,
+          37.7652
+        ]
+      },
+      "properties": {
+        "address": "909 Fir Avenue",
+        "price": "$3,095.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2364,
+          37.4852
+        ]
+      },
+      "properties": {
+        "address": "111 Poplar Drive",
+        "price": "$6,500.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3255,
+          37.563
+        ]
+      },
+      "properties": {
+        "address": "222 Palm Lane",
+        "price": "$1,598.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3661,
+          37.5841
+        ]
+      },
+      "properties": {
+        "address": "333 Alder Road",
+        "price": "$3,165.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1817,
+          37.453
+        ]
+      },
+      "properties": {
+        "address": "444 Dogwood Street",
+        "price": "$1,150.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0322,
+          37.3229
+        ]
+      },
+      "properties": {
+        "address": "555 Hickory Avenue",
+        "price": "$3,000.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8996,
+          37.4323
+        ]
+      },
+      "properties": {
+        "address": "666 Magnolia Drive",
+        "price": "$2,915.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0438,
+          37.5934
+        ]
+      },
+      "properties": {
+        "address": "777 Chestnut Lane",
+        "price": "$2,799.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.768,
+          37.6819
+        ]
+      },
+      "properties": {
+        "address": "888 Acacia Court",
+        "price": "$3,661.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8747,
+          37.6624
+        ]
+      },
+      "properties": {
+        "address": "999 Juniper Road",
+        "price": "$1,650.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9358,
+          37.7022
+        ]
+      },
+      "properties": {
+        "address": "1210 Laurel Street",
+        "price": "$1,845.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1561,
+          37.7249
+        ]
+      },
+      "properties": {
+        "address": "1311 Bay Road",
+        "price": "$2,992.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0649,
+          37.9063
+        ]
+      },
+      "properties": {
+        "address": "1412 Creek Street",
+        "price": "$2,050.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3477,
+          37.9358
+        ]
+      },
+      "properties": {
+        "address": "1513 Hilltop Avenue",
+        "price": "$2,760.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0311,
+          37.9774
+        ]
+      },
+      "properties": {
+        "address": "1614 Valley Drive",
+        "price": "$2,261.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8058,
+          38.0049
+        ]
+      },
+      "properties": {
+        "address": "1715 Garden Lane",
+        "price": "$1,900.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8847,
+          38.0279
+        ]
+      },
+      "properties": {
+        "address": "1816 River Road",
+        "price": "$2,850.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.6958,
+          37.9319
+        ]
+      },
+      "properties": {
+        "address": "1917 Forest Street",
+        "price": "$2,478.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1341,
+          38.0194
+        ]
+      },
+      "properties": {
+        "address": "2018 Lake Avenue",
+        "price": "$2,599.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.978,
+          37.7799
+        ]
+      },
+      "properties": {
+        "address": "2119 Meadow Lane",
+        "price": "$4,260.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9998,
+          37.8216
+        ]
+      },
+      "properties": {
+        "address": "2220 Park Road",
+        "price": "$2,172.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.118,
+          37.8858
+        ]
+      },
+      "properties": {
+        "address": "2321 Grove Street",
+        "price": "$2,584.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1797,
+          37.877
+        ]
+      },
+      "properties": {
+        "address": "2422 Ridge Road",
+        "price": "$1,595.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1297,
+          37.8349
+        ]
+      },
+      "properties": {
+        "address": "2523 Shore Drive",
+        "price": "$2,125.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2886,
+          38.0171
+        ]
+      },
+      "properties": {
+        "address": "2624 Harbor Avenue",
+        "price": "$3,175.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3108,
+          37.9158
+        ]
+      },
+      "properties": {
+        "address": "2725 Summit Street",
+        "price": "$2,006.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2977,
+          37.8869
+        ]
+      },
+      "properties": {
+        "address": "2826 Vista Road",
+        "price": "$2,557.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2852,
+          37.8313
+        ]
+      },
+      "properties": {
+        "address": "2927 Field Avenue",
+        "price": "$2,445.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2986,
+          38.0041
+        ]
+      },
+      "properties": {
+        "address": "3028 Desert Lane",
+        "price": "$2,855.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3455,
+          37.9622
+        ]
+      },
+      "properties": {
+        "address": "3129 Cliff Road",
+        "price": "$2,725.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.274,
+          37.9106
+        ]
+      },
+      "properties": {
+        "address": "3230 Woodland Street",
+        "price": "$2,001.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2977,
+          37.8869
+        ]
+      },
+      "properties": {
+        "address": "3331 Mountain Avenue",
+        "price": "$2,889.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2416,
+          37.7652
+        ]
+      },
+      "properties": {
+        "address": "3432 Island Road",
+        "price": "$2,681.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2316,
+          37.8244
+        ]
+      },
+      "properties": {
+        "address": "3533 Forest Lane",
+        "price": "$1,448.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2416,
+          37.7652
+        ]
+      },
+      "properties": {
+        "address": "3634 Garden Road",
+        "price": "$1,642.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2605,
+          37.5072
+        ]
+      },
+      "properties": {
+        "address": "3735 Meadow Street",
+        "price": "$960.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2758,
+          37.52
+        ]
+      },
+      "properties": {
+        "address": "3836 Valley Avenue",
+        "price": "$2,964.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3997,
+          37.6808
+        ]
+      },
+      "properties": {
+        "address": "3937 Pine Lane",
+        "price": "$3,440.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4077,
+          37.6547
+        ]
+      },
+      "properties": {
+        "address": "4038 Redwood Road",
+        "price": "$3,256.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3871,
+          37.5985
+        ]
+      },
+      "properties": {
+        "address": "4139 Maple Drive",
+        "price": "$2,717.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3661,
+          37.5841
+        ]
+      },
+      "properties": {
+        "address": "4240 Elm Street",
+        "price": "$3,037.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4111,
+          37.6305
+        ]
+      },
+      "properties": {
+        "address": "4341 Cedar Avenue",
+        "price": "$4,261.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4869,
+          37.6138
+        ]
+      },
+      "properties": {
+        "address": "4442 Oak Lane",
+        "price": "$3,385.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4286,
+          37.4636
+        ]
+      },
+      "properties": {
+        "address": "4543 Spruce Road",
+        "price": "$2,600.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      },
+      "properties": {
+        "address": "4644 Palm Drive",
+        "price": "$2,675.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2712,
+          37.8044
+        ]
+      },
+      "properties": {
+        "address": "4745 Pine Lane",
+        "price": "$1,625.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.273,
+          37.8715
+        ]
+      },
+      "properties": {
+        "address": "4846 Cypress Street",
+        "price": "$3,400.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8863,
+          37.3382
+        ]
+      },
+      "properties": {
+        "address": "4947 Redwood Road",
+        "price": "$12,500.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.143,
+          37.4419
+        ]
+      },
+      "properties": {
+        "address": "5048 Maple Drive",
+        "price": "$7,200.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4702,
+          37.6879
+        ]
+      },
+      "properties": {
+        "address": "5149 Elm Street",
+        "price": "$2,445.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0839,
+          37.3861
+        ]
+      },
+      "properties": {
+        "address": "5250 Oak Lane",
+        "price": "$2,650.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0363,
+          37.3688
+        ]
+      },
+      "properties": {
+        "address": "5351 Birch Avenue",
+        "price": "$4,198.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9552,
+          37.3541
+        ]
+      },
+      "properties": {
+        "address": "5452 Spruce Road",
+        "price": "$3,588.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9886,
+          37.5483
+        ]
+      },
+      "properties": {
+        "address": "5553 Redwood Road",
+        "price": "$2,455.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0814,
+          37.6688
+        ]
+      },
+      "properties": {
+        "address": "5654 Cypress Street",
+        "price": "$2,400.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2416,
+          37.7652
+        ]
+      },
+      "properties": {
+        "address": "5755 Fir Avenue",
+        "price": "$3,299.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2364,
+          37.4852
+        ]
+      },
+      "properties": {
+        "address": "5856 Poplar Drive",
+        "price": "$2,125.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3255,
+          37.563
+        ]
+      },
+      "properties": {
+        "address": "5957 Palm Lane",
+        "price": "$2,100.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3661,
+          37.5841
+        ]
+      },
+      "properties": {
+        "address": "6058 Alder Road",
+        "price": "$1,845.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1817,
+          37.453
+        ]
+      },
+      "properties": {
+        "address": "6159 Dogwood Street",
+        "price": "$1,695.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0322,
+          37.3229
+        ]
+      },
+      "properties": {
+        "address": "6260 Hickory Avenue",
+        "price": "$1,925.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8996,
+          37.4323
+        ]
+      },
+      "properties": {
+        "address": "6361 Magnolia Drive",
+        "price": "$1,295.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0438,
+          37.5934
+        ]
+      },
+      "properties": {
+        "address": "6462 Chestnut Lane",
+        "price": "$4,495.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.768,
+          37.6819
+        ]
+      },
+      "properties": {
+        "address": "6563 Acacia Court",
+        "price": "$1,595.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8747,
+          37.6624
+        ]
+      },
+      "properties": {
+        "address": "6664 Juniper Road",
+        "price": "$2,695.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9358,
+          37.7022
+        ]
+      },
+      "properties": {
+        "address": "6765 Laurel Street",
+        "price": "$1,595.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1561,
+          37.7249
+        ]
+      },
+      "properties": {
+        "address": "6866 Bay Road",
+        "price": "$3,895.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0649,
+          37.9063
+        ]
+      },
+      "properties": {
+        "address": "6967 Creek Street",
+        "price": "$1,795.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3477,
+          37.9358
+        ]
+      },
+      "properties": {
+        "address": "7068 Hilltop Avenue",
+        "price": "$1,695.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0311,
+          37.9774
+        ]
+      },
+      "properties": {
+        "address": "7169 Valley Drive",
+        "price": "$1,695.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8058,
+          38.0049
+        ]
+      },
+      "properties": {
+        "address": "7270 Garden Lane",
+        "price": "$2,650.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8847,
+          38.0279
+        ]
+      },
+      "properties": {
+        "address": "7371 River Road",
+        "price": "$1,495.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.6958,
+          37.9319
+        ]
+      },
+      "properties": {
+        "address": "7472 Forest Street",
+        "price": "$2,505.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1341,
+          38.0194
+        ]
+      },
+      "properties": {
+        "address": "7573 Lake Avenue",
+        "price": "$5,809.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.978,
+          37.7799
+        ]
+      },
+      "properties": {
+        "address": "7674 Meadow Lane",
+        "price": "$2,300.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9998,
+          37.8216
+        ]
+      },
+      "properties": {
+        "address": "7775 Park Road",
+        "price": "$2,231.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.118,
+          37.8858
+        ]
+      },
+      "properties": {
+        "address": "7876 Grove Street",
+        "price": "$2,100.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1797,
+          37.877
+        ]
+      },
+      "properties": {
+        "address": "7977 Ridge Road",
+        "price": "$3,525.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1297,
+          37.8349
+        ]
+      },
+      "properties": {
+        "address": "8078 Shore Drive",
+        "price": "$1,995.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2886,
+          38.0171
+        ]
+      },
+      "properties": {
+        "address": "8179 Harbor Avenue",
+        "price": "$1,800.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3108,
+          37.9158
+        ]
+      },
+      "properties": {
+        "address": "8280 Summit Street",
+        "price": "$2,595.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2977,
+          37.8869
+        ]
+      },
+      "properties": {
+        "address": "8381 Vista Road",
+        "price": "$3,319.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2852,
+          37.8313
+        ]
+      },
+      "properties": {
+        "address": "8482 Field Avenue",
+        "price": "$1,898.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2986,
+          38.0041
+        ]
+      },
+      "properties": {
+        "address": "8583 Desert Lane",
+        "price": "$3,095.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3455,
+          37.9622
+        ]
+      },
+      "properties": {
+        "address": "8684 Cliff Road",
+        "price": "$1,825.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.274,
+          37.9106
+        ]
+      },
+      "properties": {
+        "address": "8785 Woodland Street",
+        "price": "$1,700.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2977,
+          37.8869
+        ]
+      },
+      "properties": {
+        "address": "8886 Mountain Avenue",
+        "price": "$2,459.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2416,
+          37.7652
+        ]
+      },
+      "properties": {
+        "address": "8987 Island Road",
+        "price": "$3,041.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2316,
+          37.8244
+        ]
+      },
+      "properties": {
+        "address": "9088 Forest Lane",
+        "price": "$2,050.00",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "bedroom": "",
+        "squarefootage": ""
+      }
+    }
+  ]
+}

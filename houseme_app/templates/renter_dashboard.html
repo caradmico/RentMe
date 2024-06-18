@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome, {{ user.username }}</h1>
+    <h3>Renter Dashboard</h3>
+    <div class="card mt-3">
+        <div class="card-header">
+            Billing Profile
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+            <p><strong>Address:</strong> {{ user.address }}</p>
+            <p><strong>Card on File:</strong> **** **** **** {{ user.card_last4 }}</p>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">
+            Applications
+        </div>
+        <div class="card-body">
+            {% if applications %}
+                <ul class="list-group">
+                    {% for property in applications %}
+                        <li class="list-group-item">
+                            <strong>ID:</strong> {{ property.propertyID }}<br>
+                            <strong>Address:</strong> {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No applications found.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">
+            Favorites
+        </div>
+        <div class="card-body">
+            {% if favorites %}
+                <ul class="list-group">
+                    {% for property in favorites %}
+                        <li class="list-group-item">
+                            <strong>ID:</strong> {{ property.propertyID }}<br>
+                            <strong>Address:</strong> {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No favorites found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

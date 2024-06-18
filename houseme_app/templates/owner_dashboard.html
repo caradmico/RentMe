@@ -1,0 +1,41 @@
+<!-- owner_dashboard.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome, {{ user.username }}</h1>
+    <h3>Owner Dashboard</h3>
+    <div class="card mt-3">
+        <div class="card-header">
+            Billing Profile
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+            <p><strong>Address:</strong> {{ user.address }}</p>
+            <p><strong>Card on File:</strong> **** **** **** {{ user.card_last4 }}</p>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">
+            Properties
+        </div>
+        <div class="card-body">
+            {% if properties %}
+                <ul class="list-group">
+                    {% for property in properties %}
+                        <li class="list-group-item">
+                            <strong>ID:</strong> {{ property.propertyID }}<br>
+                            <strong>Address:</strong> {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No properties found.</p>
+            {% endif %}
+            <a href="{% url 'property_portfolio' %}" class="btn btn-primary mt-3">Property Portfolio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

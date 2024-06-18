@@ -1,0 +1,33 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+<div class="container">
+
+{% include 'example_info.html' %}
+
+{%  set form_index = 0 %}
+{%  set room_id_index = 0 %}
+{%  set redirect_to1_index = 0 %}
+
+<form class="eg" action="" method="post" data-busy="form">
+    {% if rooms %}
+        {% if 'FormName' in example['Forms'][form_index] %}
+            <p>{{ example['Forms'][form_index]['FormName'] | safe }}</p>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="room_id">{{ example['Forms'][form_index]['Inputs'][room_id_index]['InputName'] }}</label>
+                <select class="form-control" id="room_id" name="room_id">
+                    {% for room in rooms %}
+                        <option value="{{ room.room_id }}">{{ room.name }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% include 'submit_button.html' %}
+    {% else %}
+        {{ example['RedirectsToOtherCodeExamples'][redirect_to1_index]['RedirectText'].format('href="eg001"') | safe }}
+    {% endif %}
+  </form>
+</div>
+
+{% endblock %}

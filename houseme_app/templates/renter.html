@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Renter Dashboard</h1>
+    <p>Welcome to the renter's dashboard. Here you can view and manage your rental information.</p>
+    
+    <!-- Example of a simple list of tasks or information for the renter -->
+    <div class="renter-info">
+        <h2>Your Rentals</h2>
+        <ul>
+            <li>Rental 1: [Address], [Lease Dates]</li>
+            <li>Rental 2: [Address], [Lease Dates]</li>
+            <!-- Additional rental listings -->
+        </ul>
+    </div>
+    
+    <!-- Potential actions a renter can take -->
+    <div class="renter-actions">
+        <h2>Actions</h2>
+        <button onclick="location.href='{% url 'update_info' %}'">Update My Information</button>
+        <button onclick="location.href='{% url 'make_payment' %}'">Make a Payment</button>
+    </div>
+</div>
+{% endblock %}

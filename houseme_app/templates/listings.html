@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="available-rentals">
+        <h2>Available Rentals</h2>
+        <div class="rental-cards">
+            {% for application in approved_applications %}
+                <div class="rental-card">
+                    <img src="{% static 'images/placeholder.png' %}" alt="Property Image">
+                    <div class="rental-info">
+                        <h3>{{ application.property.city }}</h3>
+                        <p>{{ application.property.description }}</p>
+                        <p>Rent: ${{ application.property.rent_price }}</p>
+                        <p>Deposit: ${{ application.property.deposit_price }}</p>
+                        <p>Pets Allowed: {{ application.property.pets_allowed }}</p>
+                        <p>ADA Accessible: {{ application.property.ada_accessible|yesno:"Yes,No" }}</p>
+                        <p>Manager: {{ application.property.manager_name }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No approved applications found.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Add debug information -->
+    <div class="debug-info">
+        <h3>Debug Information</h3>
+        {% for application in approved_applications %}
+            <p>{{ application.property.city }} - Rent: ${{ application.property.rent_price }}, Description: {{ application.property.description }}</p>
+        {% empty %}
+            <p>No approved applications found.</p>
+        {% endfor %}
+    </div>
+
+    <style>
+        .rental-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .rental-card {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .rental-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .rental-info {
+            padding: 15px;
+        }
+
+        .rental-info h3 {
+            margin-top: 0;
+        }
+    </style>
+{% endblock %}

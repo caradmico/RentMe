@@ -1,0 +1,33 @@
+@app.route('/signup/<user_type>', methods=['GET', 'POST'])
+    def signup(user_type):
+        if user_type not in ['owner', 'renter']:
+            flash('Invalid user type')
+            return redirect(url_for('index'))  # Or another suitable page
+    
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            email = request.form['email']
+    
+            existing_user = User.query.filter(
+                (User.username == username) | (User.email == email)
+            ).first()
+            if existing_user:
+                flash('Username or email already exists')
+                return redirect(url_for('signup', user_type=user_type))
+    
+            new_user = User(username=username, email=email, user_type=user_type)
+            new_user.set_password(password)
+            db.session.add(new_user)
+            db.session.commit()
+    
+            flash(f'{user_type.capitalize()} registration successful')
+            return redirect(url_for('login'))
+    
+        return render_template(f'signup_{user_type}.html')
+
+        <-- for reducing repetion in login
+
+<-- html for index
+<a href="{{ url_for('signup', user_type='owner') }}">Signup as Owner</a>
+<a href="{{ url_for('signup', user_type='renter') }}">Signup as Renter</a>

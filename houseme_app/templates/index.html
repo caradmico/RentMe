@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="hero-image" style="background-image: url('{% static 'images/Painted_Ladies_Header.png' %}'); height: 400px;"></div>
+    <div class="text-block">
+        <p>We're the middleman you've always wanted, vetting and helping to facilitate rentals, landlords, and renters with neutrality, providing lending to qualified borrowers for deposits and repairs making moving seamless and painless.</p>
+    </div>
+    <div class="login-blocks">
+        <div>
+            <a href="{% url 'login_redirect' user_type='renter' %}">
+                <img src="{% static 'images/HouseMe Renter Lead Image.png' %}" alt="Renter">
+                <div class="overlay-text">Renter Login</div>
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'login_redirect' user_type='owner' %}">
+                <img src="{% static 'images/HouseMe Owner Lead Image.png' %}" alt="Landlord">
+                <div class="overlay-text">Manager Login</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Add debug information -->
+    <div class="debug-info">
+        <div class="available-rentals">
+            <h2>List of Available Rentals</h2>
+            <div id="propertyCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for application in approved_applications %}
+                    {% if forloop.counter0|divisibleby:4 %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="d-flex justify-content-around">
+                    {% endif %}
+                            <div class="property-card">
+                                <img src="{% static 'images/placeholder.png' %}" alt="{{ application.property.description }}">
+                                <div class="property-info">
+                                    <h5>{{ application.property.city }}, {{ application.property.state }}</h5>
+                                    <p>Rent: ${{ application.property.rent_price }}<br>Description: {{ application.property.description }}</p>
+                                </div>
+                            </div>
+                    {% if forloop.counter|divisibleby:4 or forloop.last %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="map-container">
+        <div id="map" style="height: 600px;"></div>
+    </div>
+{% endblock %}

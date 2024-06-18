@@ -1,0 +1,70 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+{% include 'example_info.html' %}
+
+{%  set signer1_form_index = 0 %}
+{%  set cond_signer2_not_checked_form_index = 1 %}
+{%  set cond_signer2_checked_form_index = 2 %}
+{%  set signer_email_index = 0 %}
+{%  set signer_name_index = 1 %}
+
+<form class="eg" action="" method="post" data-busy="form">
+    {% if 'FormName' in example['Forms'][signer1_form_index] %}
+        <h5>{{ example['Forms'][signer1_form_index]['FormName'] | safe }}</h5>
+    {% endif %}
+    <div class="form-group">
+        <label for="signer1_email">{{ example['Forms'][signer1_form_index]['Inputs'][signer_email_index]['InputName'] }}</label>
+        <input type="email" class="form-control" id="signer1_email"
+               name="signer1_email"
+               aria-describedby="emailHelp" placeholder="{{ example['Forms'][signer1_form_index]['Inputs'][signer_email_index]['InputPlaceholder'] }}"
+               required
+               value="{{ signer1_email }}"/>
+        <small id="emailHelp" class="form-text text-muted">We'll never share
+            your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="signer1_name">{{ example['Forms'][signer1_form_index]['Inputs'][signer_name_index]['InputName'] }}</label>
+        <input type="text" class="form-control" id="signer1_name"
+               placeholder="{{ example['Forms'][signer1_form_index]['Inputs'][signer_name_index]['InputPlaceholder'] }}" name="signer1_name"
+               value="{{ signer1_name }}" required/>
+        <br/>
+    </div>
+
+    {% if 'FormName' in example['Forms'][cond_signer2_not_checked_form_index] %}
+        <h5>{{ example['Forms'][cond_signer2_not_checked_form_index]['FormName'] | safe }}</h5>
+    {% endif %}
+    <div class="form-group">
+        <label for="signer_2a_email">{{ example['Forms'][cond_signer2_not_checked_form_index]['Inputs'][signer_email_index]['InputName'] }}</label>
+        <input type="email" class="form-control" id="signer_2a_email"
+               name="signer_2a_email"
+               aria-describedby="emailHelp"
+               placeholder="{{ example['Forms'][cond_signer2_not_checked_form_index]['Inputs'][signer_email_index]['InputPlaceholder'] }}" required
+               value="{{ signer_2a_email }}">
+    </div>
+    <div class="form-group">
+        <label for="signer_2a_name">{{ example['Forms'][cond_signer2_not_checked_form_index]['Inputs'][signer_name_index]['InputName'] }}</label>
+        <input type="text" class="form-control" id="signer_2a_name"
+               placeholder="{{ example['Forms'][cond_signer2_not_checked_form_index]['Inputs'][signer_name_index]['InputPlaceholder'] }}" name="signer_2a_name"
+               value="{{ signer_2a_name }}" required>
+    </div>
+
+    {% if 'FormName' in example['Forms'][cond_signer2_checked_form_index] %}
+        <h5>{{ example['Forms'][cond_signer2_checked_form_index]['FormName'] | safe }}</h5>
+    {% endif %}
+    <div class="form-group">
+        <label for="signer_2b_email">{{ example['Forms'][cond_signer2_checked_form_index]['Inputs'][signer_email_index]['InputName'] }}</label>
+        <input type="email" class="form-control" id="signer_2b_email"
+               name="signer_2b_email"
+               aria-describedby="emailHelp"
+               placeholder="{{ example['Forms'][cond_signer2_checked_form_index]['Inputs'][signer_email_index]['InputPlaceholder'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="signer_2b_name">{{ example['Forms'][cond_signer2_checked_form_index]['Inputs'][signer_name_index]['InputName'] }}</label>
+        <input type="text" class="form-control" id="signer_2b_name"
+               placeholder="{{ example['Forms'][cond_signer2_checked_form_index]['Inputs'][signer_name_index]['InputPlaceholder'] }}" name="signer_2b_name" required>
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {% include 'submit_button.html' %}
+</form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- extend base layout --> {% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+{% include 'example_info.html' %}
+
+{%  set form_index = 0 %}
+{%  set form_group_index = 0 %}
+
+<form class="eg" action="" method="post" data-busy="form">
+    {% if 'FormName' in example['Forms'][form_index] %}
+        <p>{{ example['Forms'][form_index]['FormName'] | safe }}</p>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="form_group_name">{{ example['Forms'][form_index]['Inputs'][form_group_index]['InputName'] }}</label>
+      <input type="text" class="form-control" id="form_group_name"
+             name="form_group_name" required>
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {% include 'submit_button.html' %}
+  </form>
+
+</div>
+
+{% endblock %}

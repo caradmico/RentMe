@@ -1,0 +1,21 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+{% include 'example_info.html' %}
+
+{%  set redirect_to9_index = 0 %}
+
+{% if envelope_ok %}
+<form class="eg" action="" method="post" data-busy="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% include 'continue_button.html' %}
+</form>
+
+{% else %}
+  {{ example['RedirectsToOtherCodeExamples'][redirect_to9_index]['RedirectText'].format('href="eg009"') | safe }}
+
+<form class="eg" action="eg009" method="get">
+  {% include 'continue_button.html' %}
+</form>
+{% endif %}
+
+{% endblock %}

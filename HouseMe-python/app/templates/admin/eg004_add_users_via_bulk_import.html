@@ -1,0 +1,18 @@
+<!-- extend base layout --> {% extends "base.html" %}  {% block content %}
+
+{% include 'example_info.html' %}
+
+{%  set form_index = 0 %}
+{%  set file_index = 0 %}
+
+<form class="eg" action="" method="post" data-busy="form" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="file" name="csv_file" id="csv_file">
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <button type="submit" class="btn btn-docu mt-4 mb-4">Continue</button>
+</form>
+
+<p>After you select the "Continue" button, your account should have the new users specified in the CSV file.</p>
+  
+{% endblock %}
