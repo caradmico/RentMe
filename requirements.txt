@@ -2,3 +2,5 @@ Django>=3.2,<4.0
 gunicorn
 psycopg2-binary
 django-crispy-forms
+django-crispy-bootstrap4
+Pillow
