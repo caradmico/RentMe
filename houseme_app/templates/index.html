@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
-
 {% load static %}
 
 {% block content %}
     <div class="hero-image" style="background-image: url('{% static 'images/Painted_Ladies_Header.png' %}'); height: 400px;"></div>
+    
     <div class="text-block">
         <p>We're the middleman you've always wanted, vetting and helping to facilitate rentals, landlords, and renters with neutrality, providing lending to qualified borrowers for deposits and repairs making moving seamless and painless.</p>
     </div>
@@ -34,10 +34,15 @@
                         <div class="d-flex justify-content-around">
                     {% endif %}
                             <div class="property-card">
-                                <img src="{% static 'images/placeholder.png' %}" alt="{{ application.property.description }}">
+                                {% if application.property.images.exists %}
+                                    <img src="{{ application.property.images.first.image.url }}" alt="{{ application.property.description }}">
+                                {% else %}
+                                    <img src="{% static 'images/placeholder.png' %}" alt="{{ application.property.description }}">
+                                {% endif %}
                                 <div class="property-info">
                                     <h5>{{ application.property.city }}, {{ application.property.state }}</h5>
                                     <p>Rent: ${{ application.property.rent_price }}<br>Description: {{ application.property.description }}</p>
+                                    <a href="{% url 'property_detail' application.property.pk %}">View Details</a>
                                 </div>
                             </div>
                     {% if forloop.counter|divisibleby:4 or forloop.last %}

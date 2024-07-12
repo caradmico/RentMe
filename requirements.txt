@@ -1,6 +1,12 @@
-Django>=3.2,<4.0
+Django
 gunicorn
 psycopg2-binary
 django-crispy-forms
-django-crispy-bootstrap4
+crispy-bootstrap4
 Pillow
+djangorestframework
+django-allauth
+whitenoise
+django-environ
+channels
+daphne

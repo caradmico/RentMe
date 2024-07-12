@@ -7,40 +7,47 @@
     <title>HouseMe</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Ensure this is after Bootstrap -->
     <!-- Add Mapbox GL JS CSS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/contact/">Contact</a></li>
-                {% if user.is_authenticated %}
-                    <li>{{ user.username }}</li>
-                    <li>User Type: {{ user.user_type }}</li>
-                    <li>Is Approved: {{ user.is_approved }}</li>
-                    {% if user.is_staff %}
-                        <li><a href="/admin/">Admin Dashboard</a></li>
-                    {% endif %}
-                    {% if user.user_type == 'owner' %}
-                        {% if user.is_approved %}
-                            <li><a href="{% url 'property_portfolio' %}">Property Portfolio</a></li>
-                            <li><a href="{% url 'owner_dashboard' %}">Dashboard</a></li>
-                        {% else %}
-                            <li><a href="{% url 'owner_apply' %}">Apply Now</a></li>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/">HouseMe</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><span class="nav-link">{{ user.username }}</span></li>
+                        <li class="nav-item"><span class="nav-link">User Type: {{ user.user_type }}</span></li>
+                        <li class="nav-item"><span class="nav-link">Is Approved: {{ user.is_approved }}</span></li>
+                        {% if user.is_staff %}
+                            <li class="nav-item"><a class="nav-link" href="/admin/">Admin Dashboard</a></li>
                         {% endif %}
-                    {% elif user.user_type == 'renter' %}
-                        <li><a href="{% url 'renter_apply' %}">Apply Now</a></li>
+                        {% if user.user_type == 'owner' %}
+                            {% if user.is_approved %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'property_portfolio' %}">Property Portfolio</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Dashboard</a></li>
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'owner_apply' %}">Apply Now</a></li>
+                            {% endif %}
+                        {% elif user.user_type == 'renter' or user.is_staff %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'listings' %}">Listings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'renter_apply' %}">Apply Now</a></li>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login_redirect' user_type='renter' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                     {% endif %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url 'login_redirect' user_type='renter' %}">Login</a></li>
-                    <li><a href="{% url 'register' %}">Register</a></li>
-                {% endif %}
-            </ul>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -69,7 +76,6 @@
                     zoom: 10 // starting zoom
                 });
 
-                // Load GeoJSON data and add as a layer
                 map.on('load', function () {
                     map.addSource('listings', {
                         type: 'geojson',
@@ -96,7 +102,6 @@
                                            Phone: ${e.features[0].properties.phone}<br>
                                            Email: ${e.features[0].properties.email}`;
 
-                        // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
                         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                         }
@@ -107,12 +112,10 @@
                             .addTo(map);
                     });
 
-                    // Change the cursor to a pointer when the mouse is over the listings layer.
                     map.on('mouseenter', 'listings', function () {
                         map.getCanvas().style.cursor = 'pointer';
                     });
 
-                    // Change it back to a pointer when it leaves.
                     map.on('mouseleave', 'listings', function () {
                         map.getCanvas().style.cursor = '';
                     });

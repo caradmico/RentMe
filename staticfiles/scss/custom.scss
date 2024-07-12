@@ -1,0 +1,308 @@
+// Import Bootstrap's SCSS files
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Custom CSS
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+    font-family: Arial, sans-serif;
+}
+h1 { font-size: 25px; }
+h2 { font-size: 21px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+body, html {
+    background-color: #FFF;
+}
+
+header {
+    background: #AEC6CF;
+    padding: 20px 30px;
+    max-width: 940px;
+    margin: auto;
+}
+
+#pageContent {
+    max-width: 1000px;
+    margin: auto;
+    border: none;
+}
+
+main {
+    float: left;
+    width: 60%;
+}
+
+aside {
+    float: right;
+    width: 30%;
+}
+
+article {
+    border-bottom: 0px dotted #999;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+article h2 {
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+footer {
+    background: #AEC6CF;
+    max-width: 1000px;
+    margin: auto;
+    clear: both;
+    text-align: right;
+}
+
+footer p {
+    padding: 20px;
+}
+
+address {
+    padding: 10px 20px 30px 10px;
+}
+
+aside > div {
+    margin: 10px auto;
+    background: #AEC6CF;
+    min-height: 100px;
+}
+
+#logo {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 30px;
+    margin-right: 75px;
+    color: #FFF;
+}
+
+#logo img {
+    width: 90px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+body > section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 0px;
+    border-bottom: 1px solid #999;
+    color: #333;
+}
+
+@media screen and (max-width: 1000px) {
+    body > section {
+        padding: 30px 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        float: none;
+        width: 100%;
+    }
+    aside {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* General styles for the navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
+    width: 250px !important; /* Set the width of the hamburger menu block */
+    margin-left: auto !important; /* Right justify the hamburger menu block */
+}
+
+.navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+.navbar-collapse {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-collapse.show {
+    display: flex;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Style each nav-item with a transparent background and border for debugging */
+.nav-item {
+    width: 250px !important; /* Set the width of each item */
+    margin: 10px 0 !important; /* Add top and bottom margins for breathing room */
+    background-color: transparent !important; /* Set background to transparent */
+    border: 1px solid red !important; /* Add a red border to see the item boundaries */
+}
+
+.nav-link {
+    display: block;
+    width: 100% !important;
+    padding: 10px !important;
+    background-color: rgba(238, 238, 238, 0.5) !important; /* Set a semi-transparent background */
+    text-decoration: none !important;
+    color: #444 !important;
+    text-align: center !important; /* Center the text */
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(221, 221, 221, 0.5) !important; /* Change background color on hover */
+}
+
+/* Media query for larger screens to hide the toggle button and show the nav */
+@media (min-width: 768px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .navbar-collapse {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .nav-item {
+        margin: 0 10px !important;
+    }
+
+    .nav-link {
+        width: auto !important;
+        padding: 10px 15px !important;
+        background-color: transparent !important;
+        border: none !important;
+    }
+}

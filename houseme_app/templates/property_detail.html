@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="property-detail">
+        <h2>{{ property.street1 }}, {{ property.city }}</h2>
+        <div class="property-images">
+            {% for image in property.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+            {% endfor %}
+        </div>
+        <p>Description: {{ property.description }}</p>
+        <p>Rent: ${{ property.rent_price }}</p>
+        <p>Deposit: ${{ property.deposit_price }}</p>
+        <p>Pets Allowed: {{ property.pets_allowed }}</p>
+        <p>ADA Accessible: {{ property.ada_accessible|yesno:"Yes,No" }}</p>
+        <p>Manager: {{ property.manager_name }}</p>
+        <p>Phone: {{ property.manager_phone }}</p>
+        <p>Email: {{ property.manager_email }}</p>
+    </div>
+
+    <style>
+        .property-images img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}

@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -14,7 +16,7 @@ urlpatterns = [
     path('property/portfolio/', views.property_portfolio, name='property_portfolio'),
     path('add_property/', views.add_property, name='add_property'),
     path('reset_password/<str:token>/', views.reset_password, name='reset_password'),
-    path('login_redirect/<str:user_type>/', views.login_redirect, name='login_redirect'), 
+    path('login_redirect/<str:user_type>/', views.login_redirect, name='login_redirect'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('apply/owner/', views.owner_apply, name='owner_apply'),
@@ -23,5 +25,8 @@ urlpatterns = [
     path('admin/approve/<int:application_id>/', views.approve_application, name='approve_application'),  # Approve application
     path('admin/reject/<int:application_id>/', views.reject_application, name='reject_application'),  # Reject application
     path('listings/', views.listings, name='listings'),
-
+    path('property/<int:pk>/', views.property_detail, name='property_detail'),  # Property detail
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

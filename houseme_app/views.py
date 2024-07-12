@@ -1,31 +1,28 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import RegistrationForm, LoginForm, PropertyForm, ApplicantForm, RenterForm
-from .models import Applicant, People, Property, Application, Favorite, Profile
+from django.utils import timezone
+from .forms import RegistrationForm, LoginForm, PropertyForm, ApplicantForm, RenterForm, DocumentForm
+from .models import Applicant, People, Property, Application, Favorite, Profile, Document, PropertyImage
 from .decorators import approved_renter_or_admin_required
 import random
-from .forms import DocumentForm
-from .models import Document
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseForbidden
 
 def index(request):
-    # Fetch approved applications with their associated properties
     approved_applications = list(Application.objects.filter(status='approved').select_related('property').order_by('-property__available_date'))
 
-    # Ensure at least 12 properties, repeating if necessary
     total_properties = len(approved_applications)
     min_properties = 12
     if total_properties < min_properties:
         multiplier = (min_properties // total_properties) + 1
         approved_applications = approved_applications * multiplier
-    
-    # Shuffle the list to get a random assortment
+
     random.shuffle(approved_applications)
-    approved_applications = approved_applications[:min_properties]  # Ensure only 12 items
+    approved_applications = approved_applications[:min_properties]
 
     return render(request, 'index.html', {'approved_applications': approved_applications})
 
@@ -48,7 +45,7 @@ def register(request):
 def login(request, user_type=None):
     next_url = request.GET.get('next', reverse('index'))
     if request.user.is_authenticated:
-        return redirect(next_url)  # Redirect to original destination if already logged in
+        return redirect(next_url)
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -60,13 +57,12 @@ def login(request, user_type=None):
                 if user.is_staff:
                     auth_login(request, user)
                     messages.success(request, 'Admin login successful.')
-                    return redirect(next_url if next_url else '/admin/')  # Redirect to Django admin panel
+                    return redirect(next_url if next_url else '/admin/')
                 elif user_type and user.user_type != user_type:
                     messages.error(request, f"You are not registered as {user_type.capitalize()}. Redirected to your dashboard.")
-                    return redirect_user_dashboard(user.user_type)  # Redirect to correct dashboard
+                    return redirect_user_dashboard(user.user_type)
                 else:
                     auth_login(request, user)
-                    # Redirect to original destination or default dashboard
                     redirect_to = next_url if next_url else redirect_user_dashboard(user.user_type)
                     return redirect(redirect_to)
             else:
@@ -140,7 +136,7 @@ def redirect_user_dashboard(user_type):
     elif user_type == 'renter':
         return redirect('renter_dashboard')
     elif user_type == 'admin':
-        return redirect('/admin/')  # Redirect to the default Django admin panel
+        return redirect('/admin/')
     else:
         return redirect('index')
 
@@ -171,20 +167,16 @@ def owner_apply(request):
         return redirect('index')
     
     if request.method == 'POST':
-        print("Owner application form submitted")
         form = PropertyForm(request.POST)
         if form.is_valid():
-            print("Owner application form is valid")
             property = form.save(commit=False)
             property.owner = request.user
             property.save()
 
-            # Create a new application
             Application.objects.create(applicant=request.user, property=property, status='pending')
 
             return redirect('owner_dashboard')
         else:
-            print("Owner application form is invalid")
             print(form.errors)
     else:
         form = PropertyForm()
@@ -196,18 +188,14 @@ def renter_apply(request):
         return redirect('index')
     
     if request.method == 'POST':
-        print("Renter application form submitted")
         form = RenterForm(request.POST)
         if form.is_valid():
-            print("Renter application form is valid")
             form.save()
 
-            # Create a new application
             Application.objects.create(applicant=request.user, status='pending')
 
             return redirect('renter_dashboard')
         else:
-            print("Renter application form is invalid")
             print(form.errors)
     else:
         form = RenterForm()
@@ -226,7 +214,7 @@ def reset_password(request, token):
             profile.reset_password_token = None
             profile.save()
             auth_login(request, profile.user)
-            return redirect('some_dashboard_view')  # Redirect to some dashboard or home page
+            return redirect('some_dashboard_view')
     else:
         form = SetPasswordForm(profile.user)
     return render(request, 'reset_password.html', {'form': form})
@@ -238,15 +226,12 @@ def contact(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         
-        # Check if email matches an existing user
         try:
             user_profile = Profile.objects.get(user__email=email)
             messages.success(request, f'Message from {name} linked to user: {user_profile.user.username}')
         except Profile.DoesNotExist:
             messages.success(request, 'Message sent successfully!')
 
-        # Here you can add logic to save the message or send an email
-        # For now, we'll just print it to the console
         print(f'Name: {name}, Email: {email}, Phone: {phone}, Message: {message}')
         
         return redirect('contact')
@@ -285,10 +270,8 @@ def reject_application(request, application_id):
 
 @approved_renter_or_admin_required
 def listings(request):
-    # Fetch approved applications with their associated properties
     approved_applications = Application.objects.filter(status='approved').select_related('property').order_by('-property__available_date')
 
-    # Debug print to check what we are fetching
     for application in approved_applications:
         print(f"Property: {application.property.city}, {application.property.description}, Rent: {application.property.rent_price}, Status: {application.status}")
 
@@ -318,3 +301,16 @@ def upload_document(request):
         fs.save(uploaded_file.name, uploaded_file)
         return redirect('sign_document', file_name=uploaded_file.name)
     return render(request, 'upload_document.html')
+
+def property_detail(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+    return render(request, 'property_detail.html', {'property': property})
+
+@approved_renter_or_admin_required
+def listings(request):
+    if request.user.user_type == 'owner' and not request.user.is_staff:
+        return HttpResponseForbidden("Owners are not allowed to view this page.")
+
+    approved_applications = Application.objects.filter(status='approved').select_related('property').order_by('-property__available_date')
+
+    return render(request, 'listings.html', {'approved_applications': approved_applications})
