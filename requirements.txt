@@ -10,3 +10,5 @@ whitenoise
 django-environ
 channels
 daphne
+django-sass-processor
+

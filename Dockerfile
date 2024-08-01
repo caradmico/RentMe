@@ -13,6 +13,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code to the working directory
 COPY . /app/
 
+# Copy the environment file
+COPY .env /app/.env
+
+# Set environment variables
+ENV DB_NAME=your_database_name \
+    DB_USER=your_database_user \
+    DB_PASSWORD=your_database_password \
+    DB_HOST=your_database_host \
+    DB_PORT=your_database_port
+
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
