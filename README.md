@@ -92,5 +92,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```
 
 This `README.md` provides a comprehensive overview of my project, detailing the structure, installation process, usage, features, and contribution guidelines. 
-
-I'm making this free for use because probably gonna kms ngl want someone to use it if it's helpful
