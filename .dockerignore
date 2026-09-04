@@ -2,5 +2,11 @@ __pycache__
 *.pyc
 *.pyo
 .venv
+venv
+houseme_project/env
 .git
 .tox
+.env
+staticfiles
+media
+.DS_Store

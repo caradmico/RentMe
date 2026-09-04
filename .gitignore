@@ -1,1 +1,38 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 venv/
+.venv/
+env/
+houseme_project/env/
+
+# Django / app data
+*.db
+*.sqlite3
+db.sqlite3
+staticfiles/
+media/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.swo
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Node (sass_processor include path)
+node_modules/

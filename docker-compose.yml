@@ -3,10 +3,12 @@ version: '3.8'
 services:
   db:
     image: postgres:16
+    env_file:
+      - .env
     environment:
-      POSTGRES_DB: houseme_db
-      POSTGRES_USER: new_admin
-      POSTGRES_PASSWORD: databaseadmin2024!
+      POSTGRES_DB: ${DB_NAME:-houseme_db}
+      POSTGRES_USER: ${DB_USER:-houseme}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -19,13 +21,16 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      - DJANGO_SECRET_KEY=default_secret_key
-      - DB_NAME=houseme_db
-      - DB_USER=new_admin
-      - DB_PASSWORD=databaseadmin2024!
-      - DB_HOST=db
-      - DB_PORT=5432
+      SECRET_KEY: ${SECRET_KEY}
+      DB_NAME: ${DB_NAME:-houseme_db}
+      DB_USER: ${DB_USER:-houseme}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: db
+      DB_PORT: ${DB_PORT:-5432}
+      MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN}
 
 volumes:
   postgres_data:
