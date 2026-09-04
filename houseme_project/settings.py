@@ -106,7 +106,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'houseme_app.Applicant'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Contact form uses Django's email API. Default is the console backend
+# (messages print to the process log, not a mailbox). Point EMAIL_BACKEND
+# at SMTP only in the environment — no mail credentials are committed.
+EMAIL_BACKEND = env(
+    'EMAIL_BACKEND',
+    default='django.core.mail.backends.console.EmailBackend',
+)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@localhost')
+CONTACT_EMAIL = env('CONTACT_EMAIL', default='webmaster@localhost')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

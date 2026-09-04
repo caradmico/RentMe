@@ -23,10 +23,10 @@
         <div class="card-body">
             {% if applications %}
                 <ul class="list-group">
-                    {% for property in applications %}
+                    {% for application in applications %}
                         <li class="list-group-item">
-                            <strong>ID:</strong> {{ property.propertyID }}<br>
-                            <strong>Address:</strong> {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                            <strong>Property:</strong> {{ application.property.street1 }}, {{ application.property.city }}, {{ application.property.state }} {{ application.property.zip }}<br>
+                            <strong>Status:</strong> {{ application.status }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -42,10 +42,9 @@
         <div class="card-body">
             {% if favorites %}
                 <ul class="list-group">
-                    {% for property in favorites %}
+                    {% for favorite in favorites %}
                         <li class="list-group-item">
-                            <strong>ID:</strong> {{ property.propertyID }}<br>
-                            <strong>Address:</strong> {{ property.street1 }}, {{ property.city }}, {{ property.state }} {{ property.zip }}
+                            <strong>Property:</strong> {{ favorite.property.street1 }}, {{ favorite.property.city }}, {{ favorite.property.state }} {{ favorite.property.zip }}
                         </li>
                     {% endfor %}
                 </ul>

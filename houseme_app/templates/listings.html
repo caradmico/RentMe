@@ -22,22 +22,15 @@
                         <p>ADA Accessible: {{ application.property.ada_accessible|yesno:"Yes,No" }}</p>
                         <p>Manager: {{ application.property.manager_name }}</p>
                         <a href="{% url 'property_detail' application.property.pk %}" class="btn btn-primary">View Details</a>
+                        {% if user.is_authenticated and user.user_type == 'renter' %}
+                            <a href="{% url 'renter_apply' %}?property={{ application.property.pk }}" class="btn btn-secondary">Apply</a>
+                        {% endif %}
                     </div>
                 </div>
             {% empty %}
                 <p>No approved applications found.</p>
             {% endfor %}
         </div>
-    </div>
-    
-    <!-- Add debug information -->
-    <div class="debug-info">
-        <h3>Debug Information</h3>
-        {% for application in approved_applications %}
-            <p>{{ application.property.city }} - Rent: ${{ application.property.rent_price }}, Description: {{ application.property.description }}</p>
-        {% empty %}
-            <p>No approved applications found.</p>
-        {% endfor %}
     </div>
 
     <style>

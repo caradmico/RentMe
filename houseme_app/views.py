@@ -4,12 +4,12 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.utils import timezone
-from .forms import RegistrationForm, LoginForm, PropertyForm, ApplicantForm, RenterForm, DocumentForm
-from .models import Applicant, People, Property, Application, Favorite, Profile, Document, PropertyImage
+from django.core.mail import send_mail
+from django.conf import settings
+from .forms import RegistrationForm, LoginForm, PropertyForm, RenterForm
+from .models import Property, Application, Favorite, Profile
 from .decorators import approved_renter_or_admin_required
 import random
-from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseForbidden
 
 def index(request):
@@ -186,19 +186,33 @@ def owner_apply(request):
 def renter_apply(request):
     if request.user.user_type != 'renter':
         return redirect('index')
-    
+
+    initial = {}
+    requested_pk = request.GET.get('property') or request.POST.get('property')
+    if requested_pk:
+        initial['property'] = requested_pk
+
     if request.method == 'POST':
-        form = RenterForm(request.POST)
+        form = RenterForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-
-            Application.objects.create(applicant=request.user, status='pending')
-
+            listing = form.cleaned_data['property']
+            if listing is None:
+                messages.error(request, 'Choose a property to apply for.')
+                return render(request, 'renter_apply.html', {'form': form})
+            Application.objects.create(
+                applicant=request.user,
+                property=listing,
+                status='pending',
+            )
+            messages.success(request, 'Application submitted.')
             return redirect('renter_dashboard')
-        else:
-            print(form.errors)
+        messages.error(request, 'Choose a property and correct the errors below.')
     else:
-        form = RenterForm()
+        form = RenterForm(instance=request.user, initial=initial)
+        if not form.fields['property'].queryset.exists():
+            messages.error(request, 'No properties are available to apply for yet. Check listings first.')
+
     return render(request, 'renter_apply.html', {'form': form})
 
 def reset_password(request, token):
@@ -213,27 +227,44 @@ def reset_password(request, token):
             form.save()
             profile.reset_password_token = None
             profile.save()
-            auth_login(request, profile.user)
-            return redirect('some_dashboard_view')
+            auth_login(
+                request,
+                profile.user,
+                backend='django.contrib.auth.backends.ModelBackend',
+            )
+            return redirect_user_dashboard(profile.user.user_type)
     else:
         form = SetPasswordForm(profile.user)
     return render(request, 'reset_password.html', {'form': form})
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        
-        try:
-            user_profile = Profile.objects.get(user__email=email)
-            messages.success(request, f'Message from {name} linked to user: {user_profile.user.username}')
-        except Profile.DoesNotExist:
-            messages.success(request, 'Message sent successfully!')
+        name = (request.POST.get('name') or '').strip()
+        email = (request.POST.get('email') or '').strip()
+        phone = (request.POST.get('phone') or '').strip()
+        body = (request.POST.get('message') or '').strip()
 
-        print(f'Name: {name}, Email: {email}, Phone: {phone}, Message: {message}')
-        
+        if not (name and email and body):
+            messages.error(request, 'Name, email, and message are required.')
+            return render(request, 'contact.html')
+
+        try:
+            send_mail(
+                subject=f'HouseMe contact form: {name}',
+                message=f'From: {name} <{email}>\nPhone: {phone}\n\n{body}',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_EMAIL],
+                fail_silently=False,
+            )
+        except Exception:
+            messages.error(
+                request,
+                'We could not record your message right now. Please try again later.',
+            )
+            return render(request, 'contact.html')
+
+        # Console backend (default) writes the message to the process log — not a mailbox.
+        messages.success(request, "Thanks — we received your message and will follow up.")
         return redirect('contact')
 
     return render(request, 'contact.html')
@@ -267,40 +298,6 @@ def reject_application(request, application_id):
     except Application.DoesNotExist:
         messages.error(request, 'Application does not exist.')
     return redirect('admin_dashboard')
-
-@approved_renter_or_admin_required
-def listings(request):
-    approved_applications = Application.objects.filter(status='approved').select_related('property').order_by('-property__available_date')
-
-    for application in approved_applications:
-        print(f"Property: {application.property.city}, {application.property.description}, Rent: {application.property.rent_price}, Status: {application.status}")
-
-    return render(request, 'listings.html', {'approved_applications': approved_applications})
-
-def home(request):
-    approved_applications = Application.objects.filter(status='approved').select_related('property').order_by('-property__available_date')[:12]
-    return render(request, 'index.html', {'approved_applications': approved_applications})
-
-@login_required
-def upload_document(request):
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            document = form.save(commit=False)
-            document.owner = request.user
-            document.save()
-            return redirect('document_list')
-    else:
-        form = DocumentForm()
-    return render(request, 'upload_document.html', {'form': form})
-
-def upload_document(request):
-    if request.method == 'POST':
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file)
-        return redirect('sign_document', file_name=uploaded_file.name)
-    return render(request, 'upload_document.html')
 
 def property_detail(request, pk):
     property = get_object_or_404(Property, pk=pk)
