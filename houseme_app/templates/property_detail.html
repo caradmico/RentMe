@@ -16,6 +16,9 @@
         <p>Manager: {{ property.manager_name }}</p>
         <p>Phone: {{ property.manager_phone }}</p>
         <p>Email: {{ property.manager_email }}</p>
+        {% if user.is_authenticated and user.user_type == 'renter' %}
+            <a href="{% url 'renter_apply' %}?property={{ property.pk }}" class="btn btn-primary">Apply for this property</a>
+        {% endif %}
     </div>
 
     <style>

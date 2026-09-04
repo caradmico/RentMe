@@ -5,10 +5,6 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'houseme_project.settings')
-    
-    # Debug statement to print sys.path
-    print("sys.path:", sys.path)
-    
     try:
         import django
     except ImportError as exc:

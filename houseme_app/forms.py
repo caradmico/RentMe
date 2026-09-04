@@ -88,6 +88,13 @@ class ApplicantForm(UserCreationForm):
         return user
 
 class RenterForm(forms.ModelForm):
+    property = forms.ModelChoiceField(
+        queryset=Property.objects.none(),
+        required=True,
+        empty_label='Select a property',
+        label='Property to apply for',
+    )
+
     class Meta:
         model = Applicant
         fields = [
@@ -97,6 +104,13 @@ class RenterForm(forms.ModelForm):
         widgets = {
             'move_in_date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        qs = Property.objects.filter(application__status='approved').distinct().order_by('city', 'street1')
+        if not qs.exists():
+            qs = Property.objects.all().order_by('city', 'street1')
+        self.fields['property'].queryset = qs
 
 class DocumentForm(forms.ModelForm):
     class Meta:

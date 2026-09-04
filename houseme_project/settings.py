@@ -7,22 +7,13 @@ env = environ.Env()
 # Read the .env file
 environ.Env.read_env(os.path.join(Path(__file__).resolve().parent.parent, '.env'))
 
-# Debug statements to print loaded environment variables
-print("DB_NAME:", env('DB_NAME', default=None))
-print("DB_USER:", env('DB_USER', default=None))
-print("DB_PASSWORD:", env('DB_PASSWORD', default=None))
-print("DB_HOST:", env('DB_HOST', default=None))
-print("DB_PORT:", env.int('DB_PORT', default=None))
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
-print("BASE_DIR is set to:", BASE_DIR)
-print("STATIC_ROOT is set to:", STATIC_ROOT)
-
 SECRET_KEY = env('SECRET_KEY', default='your-secret-key-here')
 DEBUG = env.bool('DEBUG', default=True)
+MAPBOX_ACCESS_TOKEN = env('MAPBOX_ACCESS_TOKEN', default='')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
@@ -64,6 +55,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'houseme_app.context_processors.public_config',
             ],
         },
     },
@@ -74,11 +66,11 @@ WSGI_APPLICATION = 'houseme_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env.int('DB_PORT'),  # Ensures this is an integer
+        'NAME': env('DB_NAME', default='houseme_db'),
+        'USER': env('DB_USER', default='houseme'),
+        'PASSWORD': env('DB_PASSWORD', default=''),
+        'HOST': env('DB_HOST', default='localhost'),
+        'PORT': env.int('DB_PORT', default=5432),
     }
 }
 
@@ -114,7 +106,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'houseme_app.Applicant'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Contact form uses Django's email API. Default is the console backend
+# (messages print to the process log, not a mailbox). Point EMAIL_BACKEND
+# at SMTP only in the environment — no mail credentials are committed.
+EMAIL_BACKEND = env(
+    'EMAIL_BACKEND',
+    default='django.core.mail.backends.console.EmailBackend',
+)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@localhost')
+CONTACT_EMAIL = env('CONTACT_EMAIL', default='webmaster@localhost')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -134,10 +134,5 @@ SASS_PROCESSOR_INCLUDE_DIRS = [
 SASS_OUTPUT_STYLE = 'compressed'
 COMPRESS_OFFLINE = True
 
-print("Final STATIC_ROOT is set to:", STATIC_ROOT)
-print("STATICFILES_DIRS is set to:", STATICFILES_DIRS)
-print("STATIC_ROOT exists:", os.path.exists(STATIC_ROOT))
-
 if not os.path.exists(STATIC_ROOT):
     os.makedirs(STATIC_ROOT)
-    print("STATIC_ROOT created:", os.path.exists(STATIC_ROOT))
