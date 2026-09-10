@@ -23,23 +23,30 @@ Docker: `docker compose up --build` (uses the same `DB_*` keys as `.env.example`
 
 `DEBUG` defaults to **False** when unset. Local `.env` must set `DEBUG=True`. When `DEBUG` is False, a placeholder `SECRET_KEY` (`change-me` / `your-secret-key-here`) raises `ImproperlyConfigured`.
 
-## Deploy on Render (one live URL)
+## Deploy on Render (free tier, one live URL)
 
-The repo includes a Blueprint at [`render.yaml`](render.yaml): one Python web service + managed Postgres.
+The repo includes a Blueprint at [`render.yaml`](render.yaml): one **free** Python web service + one **free** Postgres. No paid starter plan. `preDeployCommand` is not used (paid-only); migrate runs at the end of `buildCommand`.
 
 1. Merge this branch to `main` (or point Render at this branch).
 2. In the [Render Dashboard](https://dashboard.render.com): **New → Blueprint**.
 3. Connect **caradmico/RentMe** and select the branch that contains `render.yaml`.
-4. Render creates:
-   - Web service `houseme` (`runtime: python`)
-   - Postgres `houseme-db` (private network; `DATABASE_URL` + `DB_NAME` / `DB_USER` / `DB_PASSWORD`)
+4. Confirm both resources show **Free**. Render creates:
+   - Web service `houseme` (`runtime: python`, `plan: free`)
+   - Postgres `houseme-db` (`plan: free`, private network; `DATABASE_URL` + `DB_NAME` / `DB_USER` / `DB_PASSWORD`)
 5. When prompted (`sync: false`):
    - **MAPBOX_ACCESS_TOKEN** — optional `pk.*` token; map tiles stay blank without it.
    - For a custom domain later, add `CSRF_TRUSTED_ORIGINS=https://your.domain` and that host to `ALLOWED_HOSTS` in the Dashboard. The first `*.onrender.com` URL does not need this (settings append `https://$RENDER_EXTERNAL_HOSTNAME`).
 6. `SECRET_KEY` is auto-generated. Do not use `change-me`.
 7. After the first deploy, the live URL is `https://<service>.onrender.com` (shown on the service page and as `RENDER_EXTERNAL_HOSTNAME`).
 
-`preDeployCommand` (`python manage.py migrate --noinput`) requires a **paid** web plan (`starter` in the Blueprint). On a free web instance, move migrate into `buildCommand`.
+### Free-tier caveats
+
+- **Cold starts:** the free web service sleeps after ~15 minutes idle. The next request can take about a minute to wake. First-hit `/` may look slow; that is normal.
+- **Free instance hours:** workspaces get a monthly free-hour budget (750 hours). If you exhaust it, the service suspends until the next month.
+- **Free Postgres expires in 30 days** after creation (1 GB, no backups). After expiry there is a ~14-day grace period to upgrade before Render deletes the data. One free Postgres per workspace.
+- **No persistent disk** on free web (ephemeral filesystem). Media uploads will not survive deploys/restarts; listings live in Postgres.
+- **Migrate in build:** `python manage.py migrate --noinput` runs after `collectstatic`. If the first Blueprint deploy builds before Postgres is ready, retry the deploy once the DB is available. Do not add `preDeployCommand` on free web.
+- Free Postgres may restart or take maintenance at any time.
 
 ### Env vars for live deploy
 
@@ -63,9 +70,9 @@ The repo includes a Blueprint at [`render.yaml`](render.yaml): one Python web se
 | `PYTHON_VERSION` | Blueprint | `3.12.8` |
 | `DJANGO_SETTINGS_MODULE` | Blueprint | `houseme_project.settings` |
 
-Build: `pip install -r requirements.txt && python manage.py collectstatic --noinput`  
-Start: `gunicorn houseme_project.wsgi:application --bind 0.0.0.0:$PORT`  
-Release: `python manage.py migrate --noinput`
+Build (includes migrate; free-tier compatible):  
+`pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput`  
+Start: `gunicorn houseme_project.wsgi:application --bind 0.0.0.0:$PORT`
 
 ## Features
 

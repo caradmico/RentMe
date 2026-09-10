@@ -1,12 +1,13 @@
-# HouseMe — Render Blueprint
+# HouseMe — Render Blueprint (free web + free Postgres)
 # Dashboard: New → Blueprint → connect this repo. Creates one web service + Postgres.
 # Live URL: https://<service>.onrender.com (also RENDER_EXTERNAL_HOSTNAME).
+# No preDeployCommand: that field requires a paid web plan. Migrate runs in buildCommand.
 
 databases:
   - name: houseme-db
     databaseName: houseme_db
     user: houseme
-    plan: basic-256mb
+    plan: free
     # Private network only. The web service uses the internal connection string.
     ipAllowList: []
 
@@ -14,10 +15,8 @@ services:
   - type: web
     name: houseme
     runtime: python
-    plan: starter
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
-    # preDeployCommand requires a paid web plan (starter+). Free web: put migrate in buildCommand.
-    preDeployCommand: python manage.py migrate --noinput
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput
     startCommand: gunicorn houseme_project.wsgi:application --bind 0.0.0.0:$PORT
     healthCheckPath: /
     envVars:
