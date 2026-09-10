@@ -1,0 +1,58 @@
+# HouseMe — Render Blueprint
+# Dashboard: New → Blueprint → connect this repo. Creates one web service + Postgres.
+# Live URL: https://<service>.onrender.com (also RENDER_EXTERNAL_HOSTNAME).
+
+databases:
+  - name: houseme-db
+    databaseName: houseme_db
+    user: houseme
+    plan: basic-256mb
+    # Private network only. The web service uses the internal connection string.
+    ipAllowList: []
+
+services:
+  - type: web
+    name: houseme
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    # preDeployCommand requires a paid web plan (starter+). Free web: put migrate in buildCommand.
+    preDeployCommand: python manage.py migrate --noinput
+    startCommand: gunicorn houseme_project.wsgi:application --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: DJANGO_SETTINGS_MODULE
+        value: houseme_project.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      # settings.py prefers DATABASE_URL; falls back to discrete DB_* for local/Docker.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: houseme-db
+          property: connectionString
+      - key: DB_NAME
+        fromDatabase:
+          name: houseme-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: houseme-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: houseme-db
+          property: password
+      # Host/port come from DATABASE_URL (Render does not expose them as fromDatabase properties).
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+      # CSRF_TRUSTED_ORIGINS: settings.py appends https://$RENDER_EXTERNAL_HOSTNAME.
+      # After a custom domain, add e.g. CSRF_TRUSTED_ORIGINS=https://houseme.example.com
+      # in the Render Dashboard (do not commit secrets).
+      - key: MAPBOX_ACCESS_TOKEN
+        sync: false

@@ -147,6 +147,23 @@ header nav ul li a {
     z-index: 1;
 }
 
+.text-block h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f7f7f7;
+    margin-bottom: 6px;
+}
+
+.text-block .tagline {
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.text-block p {
+    font-size: 18px;
+}
+
 /* Footer styles */
 footer {
     background-color: #cc5500;

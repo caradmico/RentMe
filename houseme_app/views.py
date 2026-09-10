@@ -17,12 +17,16 @@ def index(request):
 
     total_properties = len(approved_applications)
     min_properties = 12
-    if total_properties < min_properties:
+    if total_properties == 0:
+        approved_applications = []
+    elif total_properties < min_properties:
         multiplier = (min_properties // total_properties) + 1
         approved_applications = approved_applications * multiplier
-
-    random.shuffle(approved_applications)
-    approved_applications = approved_applications[:min_properties]
+        random.shuffle(approved_applications)
+        approved_applications = approved_applications[:min_properties]
+    else:
+        random.shuffle(approved_applications)
+        approved_applications = approved_applications[:min_properties]
 
     return render(request, 'index.html', {'approved_applications': approved_applications})
 

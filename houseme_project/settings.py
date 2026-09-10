@@ -1,21 +1,57 @@
 from pathlib import Path
 import os
 import environ
+from django.core.exceptions import ImproperlyConfigured
 
 # Initialize environment variables
 env = environ.Env()
-# Read the .env file
+# Read the .env file when present (local). Render injects env vars directly.
 environ.Env.read_env(os.path.join(Path(__file__).resolve().parent.parent, '.env'))
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
-SECRET_KEY = env('SECRET_KEY', default='your-secret-key-here')
-DEBUG = env.bool('DEBUG', default=True)
+# Placeholder values from .env.example — never valid when DEBUG is False.
+PLACEHOLDER_SECRET_KEYS = frozenset({
+    '',
+    'change-me',
+    'your-secret-key-here',
+})
+
+
+def require_production_secret(secret_key, debug):
+    """Fail loud if a placeholder SECRET_KEY is used with DEBUG off."""
+    if not debug and secret_key in PLACEHOLDER_SECRET_KEYS:
+        raise ImproperlyConfigured(
+            'SECRET_KEY must be set to a non-placeholder value when DEBUG is False.'
+        )
+
+
+SECRET_KEY = env('SECRET_KEY', default='change-me')
+# Production-safe default: unset DEBUG means False. Set DEBUG=True in .env for local.
+DEBUG = env.bool('DEBUG', default=False)
 MAPBOX_ACCESS_TOKEN = env('MAPBOX_ACCESS_TOKEN', default='')
 
+require_production_secret(SECRET_KEY, DEBUG)
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+
+# Render sets RENDER_EXTERNAL_HOSTNAME to the public host (e.g. houseme.onrender.com).
+# Append it so the first deploy works before you add a custom domain.
+_render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME', '').strip()
+if _render_hostname:
+    if _render_hostname not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(_render_hostname)
+    _render_origin = f'https://{_render_hostname}'
+    if _render_origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(_render_origin)
+
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -33,13 +69,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'houseme_project.urls'
@@ -63,16 +99,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'houseme_project.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME', default='houseme_db'),
-        'USER': env('DB_USER', default='houseme'),
-        'PASSWORD': env('DB_PASSWORD', default=''),
-        'HOST': env('DB_HOST', default='localhost'),
-        'PORT': env.int('DB_PORT', default=5432),
+# Render Postgres exposes a private DATABASE_URL (connectionString), not DB_HOST.
+# Local / Docker keep using discrete DB_* vars from .env.
+if env('DATABASE_URL', default=''):
+    DATABASES = {'default': env.db('DATABASE_URL')}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env('DB_NAME', default='houseme_db'),
+            'USER': env('DB_USER', default='houseme'),
+            'PASSWORD': env('DB_PASSWORD', default=''),
+            'HOST': env('DB_HOST', default='localhost'),
+            'PORT': env.int('DB_PORT', default=5432),
+        }
     }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -101,6 +142,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'houseme_app' / 'static',
 ]
+# WhiteNoise serves files collected into STATIC_ROOT (see collectstatic in render.yaml).
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
+    },
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
